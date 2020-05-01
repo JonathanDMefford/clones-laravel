@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\CategoryCollection;
+use App\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+
+Route::get('/categories', function () {
+    return new CategoryCollection(Category::all());
 });

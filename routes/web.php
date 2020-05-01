@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\CategoryCollection;
+use App\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/categories', function () {
+    return new CategoryCollection(Category::all());
+});
