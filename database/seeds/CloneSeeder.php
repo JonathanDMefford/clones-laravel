@@ -15,6 +15,8 @@ class CloneSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Category::class, 20)->create();
+        factory(App\User::class, 100)->create();
+        factory(App\Category::class, 21)->create();
+        factory(App\Channel::class, 100)->create();
     }
 }
