@@ -18,5 +18,15 @@ class CloneSeeder extends Seeder
         factory(App\User::class, 100)->create();
         factory(App\Category::class, 21)->create();
         factory(App\Channel::class, 100)->create();
+        // for ($x = 0; $x <= 100; $x++) {
+        //     $id = $x + 1;
+
+        //   }
     }
 }
+
+// DB::table('users')->insert([
+//     'name' => Str::random(10),
+//     'email' => Str::random(10).'@gmail.com',
+//     'password' => Hash::make('password'),
+// ]);

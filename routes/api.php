@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\ChannelCollection;
 use App\Category;
+use App\Channel;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +31,8 @@ Route::post('/login', 'AuthController@login');
 
 Route::get('/categories', function () {
     return new CategoryCollection(Category::all());
+});
+
+Route::get('/channels/promoted', function () {
+    return new ChannelCollection(Channel::with(['category', 'user'])->get());
 });
