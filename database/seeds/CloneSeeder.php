@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 
 class CloneSeeder extends Seeder
@@ -15,18 +16,18 @@ class CloneSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 100)->create();
+        // $faker = new Faker;
+        factory(App\User::class, 1000)->create();
         factory(App\Category::class, 21)->create();
-        factory(App\Channel::class, 100)->create();
-        // for ($x = 0; $x <= 100; $x++) {
-        //     $id = $x + 1;
-
-        //   }
+        for ($x = 0; $x <= 999; $x++) {
+            $id = $x + 1;
+            $categoryId = App\Category::all()->pluck('id')->random();
+            DB::table('channels')->insert([
+                'title' => Str::random(10),
+                'user_id' => $id,
+                'category_id' => $categoryId
+                ]);
+            }
+            // factory(App\Channel::class, 00)->create();
     }
 }
-
-// DB::table('users')->insert([
-//     'name' => Str::random(10),
-//     'email' => Str::random(10).'@gmail.com',
-//     'password' => Hash::make('password'),
-// ]);

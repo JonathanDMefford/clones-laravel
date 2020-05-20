@@ -29,10 +29,14 @@ Route::group(['middleware' => 'auth:api'], function() {
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 
+Route::get('/users', function () {
+    return new UserCollection(User::all());
+});
+
 Route::get('/categories', function () {
     return new CategoryCollection(Category::all());
 });
 
-Route::get('/channels/promoted', function () {
+Route::get('/channels', function () {
     return new ChannelCollection(Channel::with(['category', 'user'])->get());
 });
