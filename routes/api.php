@@ -29,9 +29,9 @@ Route::group(['middleware' => 'auth:api'], function() {
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 
-Route::get('/users', function () {
-    return new UserCollection(User::all());
-});
+// Route::get('/users', function () {
+//     return new UserCollection(User::all());
+// });
 
 Route::get('/categories', function () {
     return new CategoryCollection(Category::all());

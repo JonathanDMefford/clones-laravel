@@ -14,16 +14,16 @@ class CloneSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        // $faker = new Faker;
-        factory(App\User::class, 1000)->create();
-        factory(App\Category::class, 21)->create();
-        for ($x = 0; $x <= 999; $x++) {
+        // $faker = new Faker\Generator();
+        factory(App\User::class, 500)->create();
+        factory(App\Category::class, 30)->create();
+        for ($x = 0; $x <= 499; $x++) {
             $id = $x + 1;
             $categoryId = App\Category::all()->pluck('id')->random();
             DB::table('channels')->insert([
-                'title' => Str::random(10),
+                'title' => $faker->sentence,
                 'user_id' => $id,
                 'category_id' => $categoryId
                 ]);
